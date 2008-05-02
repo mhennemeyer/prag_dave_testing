@@ -3,6 +3,8 @@ require 'test_helper'
 testing "negated comparison" do 
 
   testing "with !=" do
+    
+    expect(1) != 2
   
     result = run { expect(1) != 1 }
     expect(result) =~ /but\s1\s==\s1/

@@ -7,3 +7,4 @@ Autotest.add_hook :initialize do |at|
     ["spec/#{m[1]}_spec.rb"]
   }
 end
+

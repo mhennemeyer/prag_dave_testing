@@ -43,8 +43,9 @@ module PragDaveTesting
     private
   
     def __compare(op, other)
-      negated_operator = positive_comparison? && OPERATORS[op] || op
-      if @value.send(op, other) && op != negated_operator
+      negated_operator = (positive_comparison? && OPERATORS[op]) || op
+      comparison = @value.send(op, other)
+      if (comparison && op != negated_operator) || (!comparison && op == negated_operator)
         @test_runner.report_success
       else
         actual = @value.inspect
