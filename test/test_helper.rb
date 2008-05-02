@@ -1,4 +1,4 @@
-require '../lib/tmc.rb'
+require '../lib/prag_dave_testing.rb'
 
 require 'stringio'
 
