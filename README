@@ -1,19 +1,19 @@
 Dave Thomas's Proof of Concept Testing Library
 see: http://pragdave.blogs.pragprog.com/pragdave/2008/03/playing-with-a.html
 
-# -*- encoding: utf-8 -*-
-# This code is a proof-of-concept of a simple testing library.
-# It comes with no warranty (and no tests) and is guaranteed to 
-# be broken in more ways than a teenager's heart. Use at your own risk.
-#
-# This code is unsupported. Requests for changes, bug reports, 
-# and patches will be silently but brutally ignored.
-#
-# Usage: see end of file
-#
-# Copyright (c) 2008, Dave Thomas <dave@pragprog.com> 
-# All rights reserved.
-# http://pragdave.pragprog.com
-#
+-*- encoding: utf-8 -*-
+This code is a proof-of-concept of a simple testing library.
+It comes with no warranty (and no tests) and is guaranteed to 
+be broken in more ways than a teenager's heart. Use at your own risk.
+
+This code is unsupported. Requests for changes, bug reports, 
+and patches will be silently but brutally ignored.
+
+Copyright (c) 2008, Dave Thomas <dave@pragprog.com> 
+All rights reserved.
+http://pragdave.pragprog.com
+
+
+
 
 

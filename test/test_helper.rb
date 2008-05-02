@@ -1,6 +1,7 @@
-require '../lib/prag_dave_testing.rb'
+require File.dirname(__FILE__) + '/../lib/prag_dave_testing.rb'
 
 require 'stringio'
+
 
 module Helper
   

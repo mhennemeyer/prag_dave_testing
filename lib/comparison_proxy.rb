@@ -7,7 +7,7 @@ module PragDaveTesting
       line = line.to_i
       lines = File.readlines(file)
       current = lines[line-1]
-      !(current =~ /expect\(.*\)\s(!=|!~)/)
+      !(current =~ /(expect\(.*|^\s*)\)\s*(!=|!~)/)
     end
   
     # Comparison operators we support and their opposites

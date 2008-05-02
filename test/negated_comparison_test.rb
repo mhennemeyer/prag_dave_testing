@@ -6,6 +6,13 @@ testing "negated comparison" do
   
     result = run { expect(1) != 1 }
     expect(result) =~ /but\s1\s==\s1/
+    
+    result = run { 
+      expect(
+      1
+      ) != 1 
+    }
+    expect(result) =~ /but\s1\s==\s1/
 
   end
 
