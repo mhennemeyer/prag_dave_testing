@@ -37,20 +37,6 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-
-# WARNING--there's a major problem that folks building from this library
-# will need to address. Ruby doesn't really have != and !~ methods. Instead,
-# the parser maps (a != b) into !(a == b). This means that the ComparisonProxy
-# cannot intercept calls to either of these. This is a problem because
-#
-#   expect(1) != 1
-#
-# actually passes, because it becomes !(expect(1) == 1), and the expect method
-# is happy with that.
-#
-# I'm betting there's a way around this...   Dave
- 
-
 class TestResultsGatherer
   require 'singleton'
   include Singleton
@@ -60,7 +46,7 @@ class TestResultsGatherer
     at_exit { report_test_statistics }
   end
   
-  # Report a failure, giving context fromm the source file that caused it
+  # Report a failure, giving context from the source file that caused it
   def report_failure(message)
     @failures += 1
     file, line = caller(3)[0].split(/:/, 2)
@@ -120,6 +106,16 @@ end
 
 
 class ComparisonProxy
+  
+  # Is this comparison negated? : !=, !~
+  def positive_comparison?
+    file, line = caller(3)[0].split(/:/, 2)
+    line = line.to_i
+    lines = File.readlines(file)
+    current = lines[line-1]
+    !(current =~ /!=|!~/)
+  end
+  
   # Comparison operators we support and their opposites
   OPERATORS = {}
   [
@@ -153,10 +149,11 @@ class ComparisonProxy
   private
   
   def __compare(op, other)
-    if @value.send(op, other)
+    negated_operator = positive_comparison? && OPERATORS[op] || op
+    if @value.send(op, other) && op != negated_operator
       @test_runner.report_success
     else
-      @test_runner.report_failure("#{@value.inspect} #{OPERATORS[op]} #{other.inspect}")
+      @test_runner.report_failure("#{@value.inspect} #{negated_operator} #{other.inspect}")
     end
   end
 
@@ -222,5 +219,11 @@ if __FILE__ == $0
   expect(1) == 2
   
   expect(2) == 3  # so will this one
-
+  
+  expect(1) != 1  # now this negation thing works:
+  
+  expect(3) <= 4
+  
+  expect(1) == 1
+  
 end
