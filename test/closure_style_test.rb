@@ -1,7 +1,7 @@
 require 'test_helper'
 
 
-testing "closed style macro testing" do
+testing "closure style macro testing" do
   
   class List
     attr_accessor :list_items

@@ -12,11 +12,10 @@ module PragDaveTesting
   # tacky, but has the nice side effect of saving and restoring it in nested
   # testing blocks
   def testing(description,&block)
-    # puts description_method_name = ("expect_" + description.gsub(" ", "_")).to_sym
-    # puts self.class
-    # PragDaveTesting.module_eval do 
-    #   define_method(description_method_name,&block)
-    # end
+    description_method_name = ("expect_" + description.gsub(" ", "_")).to_sym
+    PragDaveTesting.module_eval do 
+      define_method(description_method_name,&block)
+    end
     ivs = {}
     instance_variables.each do |iv|
       ivs[iv] = instance_variable_get(iv)
