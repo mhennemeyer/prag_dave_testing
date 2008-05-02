@@ -1,41 +1,4 @@
-# -*- encoding: utf-8 -*-
-# This code is a proof-of-concept of a simple testing library.
-# It comes with no warranty (and no tests) and is guaranteed to 
-# be broken in more ways than a teenager's heart. Use at your own risk.
-#
-# This code is unsupported. Requests for changes, bug reports, 
-# and patches will be silently but brutally ignored.
-#
-# Usage: see end of file
-#
-# Copyright (c) 2008, Dave Thomas <dave@pragprog.com> 
-# All rights reserved.
-# http://pragdave.pragprog.com
-#
-# LICENSE:
-# 
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
-#     * Redistributions of source code must retain the above copyright
-#       notice, this list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright
-#       notice, this list of conditions and the following disclaimer in the
-#       documentation and/or other materials provided with the distribution.
-#     * Neither the name of the Dave Thomas nor the
-#       names of its contributors may be used to endorse or promote products
-#       derived from this software without specific prior written permission.
-# 
-# THIS SOFTWARE IS PROVIDED BY DAVE THOMAS “AS IS” AND ANY
-# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-# DISCLAIMED. IN NO EVENT SHALL DAVE THOMAS BE LIABLE FOR ANY
-# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
+
 
 class TestResultsGatherer
   require 'singleton'
@@ -55,12 +18,12 @@ class TestResultsGatherer
     line_in_error = lines[line-1]
     comment = find_comment(lines, line-1)
 
-    STDERR.print "\n#{file}:#{line}"
-    STDERR.print "—while testing #{@description}" if @description
-    STDERR.puts
-    STDERR.puts "\t#{comment}" if comment
-    STDERR.puts "\tthe code was: #{line_in_error.strip},"
-    STDERR.puts "\tbut #{message}"
+    $stderr.print "\n#{file}:#{line}"
+    $stderr.print "—while testing #{@description}" if @description
+    $stderr.puts
+    $stderr.puts "\t#{comment}" if comment
+    $stderr.puts "\tthe code was: \n #{line_in_error.strip}," + "\n"
+    $stderr.puts "\tbut #{message}" + "\n"
   end
   
   def report_success
@@ -68,7 +31,7 @@ class TestResultsGatherer
   end
   
   def report_test_statistics
-    STDERR.puts "\n#{pluralize_test(@successes)} passed, #{pluralize_test(@failures)} failed"
+    $stderr.puts "\n#{pluralize_test(@successes)} passed, #{pluralize_test(@failures)} failed"
   end
     
 
@@ -113,7 +76,7 @@ class ComparisonProxy
     line = line.to_i
     lines = File.readlines(file)
     current = lines[line-1]
-    !(current =~ /!=|!~/)
+    !(current =~ /expect\(.*\)\s(!=|!~)/)
   end
   
   # Comparison operators we support and their opposites
@@ -153,7 +116,10 @@ class ComparisonProxy
     if @value.send(op, other) && op != negated_operator
       @test_runner.report_success
     else
-      @test_runner.report_failure("#{@value.inspect} #{negated_operator} #{other.inspect}")
+      actual = @value.inspect
+      actual.size < 30 ? (seperator, tab = " ", "") : (seperator, tab = "\n", "\t")
+      report = [actual, tab + negated_operator.to_s, other.inspect].join seperator
+      @test_runner.report_failure(report)
     end
   end
 
