@@ -4,9 +4,7 @@ module PragDaveTesting
     # Is this comparison negated? : !=, !~
     def positive_comparison?
       file, line = caller(3)[0].split(/:/, 2)
-      line = line.to_i
-      lines = File.readlines(file)
-      current = lines[line-1]
+      current = File.readlines(file)[line.to_i-1]
       !(current =~ /(expect\(.*|^\s*)\)\s*(!=|!~)/)
     end
   
