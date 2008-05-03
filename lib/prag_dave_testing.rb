@@ -30,6 +30,10 @@ module PragDaveTesting
       instance_variable_set(iv, value)
     end
   end
+  
+  def integration_test(&block)
+    ActionController::Integration::Session.new.instance_eval &block
+  end
 
 end
 
