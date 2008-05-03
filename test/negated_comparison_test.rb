@@ -34,4 +34,14 @@ testing "negated comparison" do
     expect(result) == ""
   
   end
+  
+  testing "should ignore negations in patterns" do
+  
+    result = run {
+      expect("Horst") =~ /Horst!=/ 
+    }
+    expect(result) =~ /.+/ 
+  
+  end
+  
 end
