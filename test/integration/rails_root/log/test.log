@@ -114,3 +114,169 @@ Processing ModelsController#index (for 127.0.0.1 at 2008-05-03 21:53:36) [GET]
 Rendering template within layouts/models
 Rendering models/index
 Completed in 0.02471 (40 reqs/sec) | Rendering: 0.01196 (48%) | DB: 0.14930 (604%) | 200 OK [http://www.example.com/models]
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000486)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mModel Columns (0.006517)[0m   [0mSHOW FIELDS FROM `models`[0m
+  [4;36;1mSQL (0.025857)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Create (0.000892)[0m   [0mINSERT INTO `models` (`updated_at`, `created_at`) VALUES('2008-05-03 21:58:38', '2008-05-03 21:58:38')[0m
+  [4;36;1mSQL (0.002238)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSti Columns (0.008825)[0m   [0mSHOW FIELDS FROM `stis`[0m
+  [4;36;1mSQL (0.000453)[0m   [0;1mBEGIN[0m
+  [4;35;1mSti Create (0.000840)[0m   [0mINSERT INTO `stis` (`updated_at`, `type`, `created_at`) VALUES('2008-05-03 21:58:38', NULL, '2008-05-03 21:58:38')[0m
+  [4;36;1mSQL (0.041749)[0m   [0;1mCOMMIT[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-03 21:58:38) [POST]
+  Session ID: b4f6dfe000fc2dfae1d772abc76ea600
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mSQL (0.001373)[0m   [0mBEGIN[0m
+  [4;36;1mModel Create (0.000897)[0m   [0;1mINSERT INTO `models` (`updated_at`, `created_at`) VALUES('2008-05-03 21:58:38', '2008-05-03 21:58:38')[0m
+  [4;35;1mSQL (0.003293)[0m   [0mCOMMIT[0m
+Redirected to http://www.example.com/models/7
+Completed in 0.01916 (52 reqs/sec) | DB: 0.09342 (487%) | 302 Found [http://www.example.com/models]
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000672)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mModel Load (0.001937)[0m   [0mSELECT * FROM `models` [0m
+  [4;36;1mSQL (0.000427)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Columns (0.008045)[0m   [0mSHOW FIELDS FROM `models`[0m
+  [4;36;1mModel Destroy (0.020946)[0m   [0;1m DELETE FROM `models`
+ WHERE `id` = 1
+[0m
+  [4;35;1mSQL (0.002319)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.001528)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Destroy (0.001414)[0m   [0m DELETE FROM `models`
+ WHERE `id` = 2
+[0m
+  [4;36;1mSQL (0.029673)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000442)[0m   [0mBEGIN[0m
+  [4;36;1mModel Destroy (0.000791)[0m   [0;1m DELETE FROM `models`
+ WHERE `id` = 3
+[0m
+  [4;35;1mSQL (0.001295)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000411)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Destroy (0.001016)[0m   [0m DELETE FROM `models`
+ WHERE `id` = 4
+[0m
+  [4;36;1mSQL (0.000894)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000426)[0m   [0mBEGIN[0m
+  [4;36;1mModel Destroy (0.000798)[0m   [0;1m DELETE FROM `models`
+ WHERE `id` = 5
+[0m
+  [4;35;1mSQL (0.001080)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000406)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Destroy (0.000878)[0m   [0m DELETE FROM `models`
+ WHERE `id` = 6
+[0m
+  [4;36;1mSQL (0.001817)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000408)[0m   [0mBEGIN[0m
+  [4;36;1mModel Destroy (0.000779)[0m   [0;1m DELETE FROM `models`
+ WHERE `id` = 7
+[0m
+  [4;35;1mSQL (0.000923)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000453)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Create (0.001060)[0m   [0mINSERT INTO `models` (`updated_at`, `created_at`) VALUES('2008-05-03 22:12:39', '2008-05-03 22:12:39')[0m
+  [4;36;1mSQL (0.001965)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSti Columns (0.020895)[0m   [0mSHOW FIELDS FROM `stis`[0m
+  [4;36;1mSQL (0.000452)[0m   [0;1mBEGIN[0m
+  [4;35;1mSti Create (0.002165)[0m   [0mINSERT INTO `stis` (`updated_at`, `type`, `created_at`) VALUES('2008-05-03 22:12:39', NULL, '2008-05-03 22:12:39')[0m
+  [4;36;1mSQL (0.000947)[0m   [0;1mCOMMIT[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-03 22:12:39) [POST]
+  Session ID: ff322f564d5efa997b3f68c7dc556da7
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mSQL (0.000522)[0m   [0mBEGIN[0m
+  [4;36;1mModel Create (0.000790)[0m   [0;1mINSERT INTO `models` (`updated_at`, `created_at`) VALUES('2008-05-03 22:12:39', '2008-05-03 22:12:39')[0m
+  [4;35;1mSQL (0.001186)[0m   [0mCOMMIT[0m
+Redirected to http://www.example.com/models/9
+Completed in 0.01644 (60 reqs/sec) | DB: 0.10976 (667%) | 302 Found [http://www.example.com/models]
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000488)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mModel Load (0.001484)[0m   [0mSELECT * FROM `models` [0m
+  [4;36;1mSQL (0.000479)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Columns (0.007675)[0m   [0mSHOW FIELDS FROM `models`[0m
+  [4;36;1mModel Destroy (0.020344)[0m   [0;1m DELETE FROM `models`
+ WHERE `id` = 8
+[0m
+  [4;35;1mSQL (0.000982)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000406)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Destroy (0.000841)[0m   [0m DELETE FROM `models`
+ WHERE `id` = 9
+[0m
+  [4;36;1mSQL (0.023783)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.043647)[0m   [0mSELECT count(*) AS count_all FROM `models` [0m
+  [4;36;1mSQL (0.000630)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Create (0.000796)[0m   [0mINSERT INTO `models` (`updated_at`, `created_at`) VALUES('2008-05-03 22:12:58', '2008-05-03 22:12:58')[0m
+  [4;36;1mSQL (0.001176)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSti Columns (0.007483)[0m   [0mSHOW FIELDS FROM `stis`[0m
+  [4;36;1mSQL (0.000776)[0m   [0;1mBEGIN[0m
+  [4;35;1mSti Create (0.000831)[0m   [0mINSERT INTO `stis` (`updated_at`, `type`, `created_at`) VALUES('2008-05-03 22:12:58', NULL, '2008-05-03 22:12:58')[0m
+  [4;36;1mSQL (0.002114)[0m   [0;1mCOMMIT[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-03 22:12:58) [POST]
+  Session ID: 817ad8977f32700421d12d1029fbcea5
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mSQL (0.000546)[0m   [0mBEGIN[0m
+  [4;36;1mModel Create (0.000958)[0m   [0;1mINSERT INTO `models` (`updated_at`, `created_at`) VALUES('2008-05-03 22:12:58', '2008-05-03 22:12:58')[0m
+  [4;35;1mSQL (0.003261)[0m   [0mCOMMIT[0m
+Redirected to http://www.example.com/models/11
+Completed in 0.12085 (8 reqs/sec) | DB: 0.11870 (98%) | 302 Found [http://www.example.com/models]
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000502)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mModel Load (0.001433)[0m   [0mSELECT * FROM `models` [0m
+  [4;36;1mSQL (0.000425)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Columns (0.007898)[0m   [0mSHOW FIELDS FROM `models`[0m
+  [4;36;1mModel Destroy (0.001131)[0m   [0;1m DELETE FROM `models`
+ WHERE `id` = 10
+[0m
+  [4;35;1mSQL (0.001187)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000417)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Destroy (0.000800)[0m   [0m DELETE FROM `models`
+ WHERE `id` = 11
+[0m
+  [4;36;1mSQL (0.018997)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000973)[0m   [0mSELECT count(*) AS count_all FROM `models` [0m
+  [4;36;1mSQL (0.000987)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Create (0.000720)[0m   [0mINSERT INTO `models` (`updated_at`, `created_at`) VALUES('2008-05-03 22:13:15', '2008-05-03 22:13:15')[0m
+  [4;36;1mSQL (0.001094)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSti Columns (0.005909)[0m   [0mSHOW FIELDS FROM `stis`[0m
+  [4;36;1mSQL (0.002296)[0m   [0;1mBEGIN[0m
+  [4;35;1mSti Create (0.000745)[0m   [0mINSERT INTO `stis` (`updated_at`, `type`, `created_at`) VALUES('2008-05-03 22:13:15', NULL, '2008-05-03 22:13:15')[0m
+  [4;36;1mSQL (0.001080)[0m   [0;1mCOMMIT[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-03 22:13:15) [POST]
+  Session ID: d61ec6dc6672129906e013c56c220a76
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mSQL (0.000536)[0m   [0mBEGIN[0m
+  [4;36;1mModel Create (0.000967)[0m   [0;1mINSERT INTO `models` (`updated_at`, `created_at`) VALUES('2008-05-03 22:13:15', '2008-05-03 22:13:15')[0m
+  [4;35;1mSQL (0.002571)[0m   [0mCOMMIT[0m
+Redirected to http://www.example.com/models/13
+Completed in 0.11990 (8 reqs/sec) | DB: 0.05067 (42%) | 302 Found [http://www.example.com/models]
+  [4;36;1mSQL (0.001660)[0m   [0;1mSELECT count(*) AS count_all FROM `models` [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000499)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mModel Load (0.001422)[0m   [0mSELECT * FROM `models` [0m
+  [4;36;1mSQL (0.000413)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Columns (0.008778)[0m   [0mSHOW FIELDS FROM `models`[0m
+  [4;36;1mModel Destroy (0.000913)[0m   [0;1m DELETE FROM `models`
+ WHERE `id` = 12
+[0m
+  [4;35;1mSQL (0.001429)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000411)[0m   [0;1mBEGIN[0m
+  [4;35;1mModel Destroy (0.000968)[0m   [0m DELETE FROM `models`
+ WHERE `id` = 13
+[0m
+  [4;36;1mSQL (0.001602)[0m   [0;1mCOMMIT[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-03 22:14:44) [POST]
+  Session ID: f4ee6cf8ae6c0697e0c663bd96a19b70
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mSQL (0.001320)[0m   [0mBEGIN[0m
+  [4;36;1mModel Create (0.000824)[0m   [0;1mINSERT INTO `models` (`updated_at`, `created_at`) VALUES('2008-05-03 22:14:44', '2008-05-03 22:14:44')[0m
+  [4;35;1mSQL (0.001117)[0m   [0mCOMMIT[0m
+Redirected to http://www.example.com/models/14
+Completed in 0.01865 (53 reqs/sec) | DB: 0.01970 (105%) | 302 Found [http://www.example.com/models]
+  [4;36;1mModel Load (0.001497)[0m   [0;1mSELECT * FROM `models` LIMIT 1[0m
