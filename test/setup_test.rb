@@ -13,6 +13,9 @@ end
 testing "var should not eql 2" do
   result = run { expect(@var) == 2 }
   expect(result) =~ /but\s1\s!=\s2/
+  testing "nothing" do
+    expect(1) == 1
+  end
 end
 
 testing "with a second setup" do

@@ -3,15 +3,6 @@ require 'comparison_proxy.rb'
 
 module PragDaveTesting
   
-  Array.module_eval do
-    def dump_hash
-      h = {}
-      self.each do |k|
-        h[k] = nil
-      end
-    end
-  end
-  
   # :call-seq:
   # expect(1) == 1
   def expect(value)
@@ -62,7 +53,7 @@ module PragDaveTesting
     instance_variables.each do |iv|
       ivs[iv] = instance_variable_get(iv) unless iv == "@__setup"
     end
-    @__setup && @__setup[@__test_description].call
+    @__setup && @__setup[@__test_description] && @__setup[@__test_description].call
     @__test_description = description
     yield
     @__test_description = nil
