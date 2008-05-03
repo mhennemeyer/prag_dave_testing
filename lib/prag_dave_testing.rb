@@ -3,10 +3,26 @@ require 'comparison_proxy.rb'
 
 module PragDaveTesting
   
+  Array.module_eval do
+    def dump_hash
+      h = {}
+      self.each do |k|
+        h[k] = nil
+      end
+    end
+  end
+  
   # :call-seq:
   # expect(1) == 1
   def expect(value)
     ComparisonProxy.new(TestResultsGatherer.instance, value, @__test_description)
+  end
+  
+  def testing_block_to_macro(description, &block)
+    description_method_name = ("expect_" + description.gsub(" ", "_")).to_sym
+    PragDaveTesting.module_eval do 
+      define_method(description_method_name,&block)
+    end
   end
   
   # The setup code is run in all subsequent testing blocks
@@ -32,7 +48,8 @@ module PragDaveTesting
   #   
   def setup(&block)
     @__setup ||= {}
-    @__setup[@__test_description] = lambda &block
+    @__test_description ||= "nilnil"
+    @__setup[@__test_description] = lambda(&block)
   end
 
   # Save any instance variables, yield to our block, then restore the instance
@@ -40,23 +57,18 @@ module PragDaveTesting
   # tacky, but has the nice side effect of saving and restoring it in nested
   # testing blocks
   def testing(description,&block)
-    description_method_name = ("expect_" + description.gsub(" ", "_")).to_sym
-    PragDaveTesting.module_eval do 
-      define_method(description_method_name,&block)
-    end
+    testing_block_to_macro(description, &block)
     ivs = {}
     instance_variables.each do |iv|
       ivs[iv] = instance_variable_get(iv) unless iv == "@__setup"
     end
-    saved = Marshal.dump(ivs)
-    @__setup[@__test_description].call
+    @__setup && @__setup[@__test_description].call
     @__test_description = description
     yield
     @__test_description = nil
     instance_variables.each do |iv| 
       instance_variable_set(iv, nil) unless iv == "@__setup"
     end
-    ivs = Marshal.load(saved)
     ivs.each do |iv, value|
       instance_variable_set(iv, value)
     end

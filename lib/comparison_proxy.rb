@@ -1,7 +1,7 @@
 module PragDaveTesting
   class ComparisonProxy
   
-    # Is this comparison negated? : !=, !~
+    # Is this comparison not negative? : !=, !~
     def positive_comparison?
       file, line = caller(3)[0].split(/:/, 2)
       current = File.readlines(file)[line.to_i-1]
@@ -14,8 +14,6 @@ module PragDaveTesting
      [ :">" , :"<=" ],
      [ :">=", :"<"  ],
      [ :"==", :"!=" ],
-     [ :"==", :"!=" ],
-     [ :"==", :"!=" ]
     ].each {|op1, op2| OPERATORS[op1] = op2; OPERATORS[op2] = op1 }
 
     # Then ones that don't have opposites
