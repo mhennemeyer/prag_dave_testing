@@ -70,7 +70,6 @@ module PragDaveTesting
   def testing(description,&block)
     testing_block_to_macro(description, &block)
     set_environment
-    p description
     @__setup && @__setup[@__test_description] && @__setup[@__test_description].call
     @__test_description = description
     
@@ -82,7 +81,6 @@ module PragDaveTesting
     end
     
     get_environment.each do |iv, value|
-      p iv, value
       instance_variable_set(iv, value)
     end
   end
