@@ -16,6 +16,26 @@ module PragDaveTesting
     end
   end
   
+  def set_environment
+    ivs = {}
+    @__env ||= []
+    instance_variables.each do |iv|
+      val = instance_variable_get(iv)
+      unless iv == "@__setup" || iv == "@__env"
+        begin 
+          ivs[iv] = val.clone
+        rescue TypeError
+          ivs[iv] = val
+        end
+      end
+    end
+    @__env.push ivs
+  end
+  
+  def get_environment
+    @__env.pop
+  end
+  
   # The setup code is run in all subsequent testing blocks
   # on the same level.
   # == Example:
@@ -49,18 +69,20 @@ module PragDaveTesting
   # testing blocks
   def testing(description,&block)
     testing_block_to_macro(description, &block)
-    ivs = {}
-    instance_variables.each do |iv|
-      ivs[iv] = instance_variable_get(iv) unless iv == "@__setup"
-    end
+    set_environment
+    p description
     @__setup && @__setup[@__test_description] && @__setup[@__test_description].call
     @__test_description = description
+    
     yield
     @__test_description = nil
+    
     instance_variables.each do |iv| 
-      instance_variable_set(iv, nil) unless iv == "@__setup"
+      instance_variable_set(iv, nil) unless iv == "@__setup" || iv == "@__env"
     end
-    ivs.each do |iv, value|
+    
+    get_environment.each do |iv, value|
+      p iv, value
       instance_variable_set(iv, value)
     end
   end
