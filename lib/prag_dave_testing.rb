@@ -16,14 +16,16 @@ module PragDaveTesting
     end
   end
   
+  # Don't look at this code !!!
   def set_environment
+    # Really! Don't look !
     ivs = {}
     @__env ||= []
     instance_variables.each do |iv|
       val = instance_variable_get(iv)
       unless iv == "@__setup" || iv == "@__env"
         begin
-          unless val.class =~ /ActiveRecord/
+          unless val.class.superclass.to_s =~ /ActiveRecord/ || val.class.superclass.superclass.to_s =~ /ActiveRecord/
             ivs[iv] = val.clone
           else
             ivs[iv] = val

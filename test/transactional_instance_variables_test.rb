@@ -35,3 +35,26 @@ testing "Transactional instance variables with instance variables" do
    @user.name = 'John'
    expect(@user.id) == 1
 end
+
+testing "Transactional instance variables ActiveRecord" do
+  # ActiveRecord models should not be cloned because they will loose their id
+  
+  class ActiveRecord
+  end
+  class Model < ActiveRecord
+  end
+  class Sti < Model
+  end
+  @model = Model.new
+  @model_id = @model.object_id
+  
+  @sti = Sti.new
+  @sti_id = @sti.object_id
+  
+  testing "something else" do
+  end
+  
+  expect(@model.object_id) == @model_id
+  expect(@sti.object_id)   == @sti_id
+  
+end
