@@ -1,0 +1,12 @@
+<h1>Editing sti</h1>
+
+<%= error_messages_for :sti %>
+
+<% form_for(@sti) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @sti %> |
+<%= link_to 'Back', stis_path %>

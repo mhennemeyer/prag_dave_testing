@@ -1,0 +1,65 @@
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000672)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.004528)[0m   [0mCREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.018641)[0m   [0;1mINSERT INTO `schema_info` (version) VALUES(0)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.000929)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.001379)[0m   [0mSHOW TABLES[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000639)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.000989)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.001506)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.000472)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.001841)[0m   [0mDROP DATABASE IF EXISTS `prag_dave_testing_test`[0m
+  [4;36;1mSQL (0.001685)[0m   [0;1mCREATE DATABASE `prag_dave_testing_test` DEFAULT CHARACTER SET `utf8`[0m
+  [4;35;1mSQL (0.000455)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.005514)[0m   [0;1mCREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.002575)[0m   [0mINSERT INTO `schema_info` (version) VALUES(0)[0m
+  [4;36;1mSQL (0.006890)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000793)[0m   [0mUPDATE schema_info SET version = 0[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.001189)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.001271)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CreateModels (1)
+  [4;36;1mSQL (0.032803)[0m   [0;1mCREATE TABLE `models` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000848)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000889)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CreateStis (2)
+  [4;35;1mSQL (0.004084)[0m   [0mCREATE TABLE `stis` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `type` varchar(255) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000805)[0m   [0;1mUPDATE schema_info SET version = 2[0m
+  [4;35;1mSQL (0.000942)[0m   [0mSELECT * FROM schema_info[0m
+  [4;36;1mSQL (0.002322)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.010241)[0m   [0mSHOW FIELDS FROM `models`[0m
+  [4;36;1mSQL (0.008510)[0m   [0;1mdescribe `models`[0m
+  [4;35;1mSQL (0.002745)[0m   [0mSHOW KEYS FROM `models`[0m
+  [4;36;1mSQL (0.008063)[0m   [0;1mSHOW FIELDS FROM `stis`[0m
+  [4;35;1mSQL (0.007275)[0m   [0mdescribe `stis`[0m
+  [4;36;1mSQL (0.023373)[0m   [0;1mSHOW KEYS FROM `stis`[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000527)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.000988)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000926)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000951)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.001400)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.007471)[0m   [0;1mSHOW FIELDS FROM `models`[0m
+  [4;35;1mSQL (0.007016)[0m   [0mdescribe `models`[0m
+  [4;36;1mSQL (0.024498)[0m   [0;1mSHOW KEYS FROM `models`[0m
+  [4;35;1mSQL (0.006929)[0m   [0mSHOW FIELDS FROM `stis`[0m
+  [4;36;1mSQL (0.008746)[0m   [0;1mdescribe `stis`[0m
+  [4;35;1mSQL (0.003001)[0m   [0mSHOW KEYS FROM `stis`[0m
+  [4;36;1mSQL (0.000456)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.038398)[0m   [0mDROP DATABASE IF EXISTS `prag_dave_testing_test`[0m
+  [4;36;1mSQL (0.001850)[0m   [0;1mCREATE DATABASE `prag_dave_testing_test` DEFAULT CHARACTER SET `utf8`[0m
+  [4;35;1mSQL (0.000574)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S02Unknown table 'models': DROP TABLE `models`[0m
+  [4;35;1mSQL (0.003853)[0m   [0mCREATE TABLE `models` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S02Unknown table 'stis': DROP TABLE `stis`[0m
+  [4;35;1mSQL (0.003315)[0m   [0mCREATE TABLE `stis` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `type` varchar(255) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.004761)[0m   [0;1mCREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.002372)[0m   [0mINSERT INTO `schema_info` (version) VALUES(0)[0m
+  [4;36;1mSQL (0.007615)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000913)[0m   [0mUPDATE schema_info SET version = 2[0m

@@ -1,0 +1,14 @@
+development:
+  adapter: mysql
+  database: prag_dave_testing_dev
+  username: root
+  password:
+  host: localhost
+  
+test:
+  adapter: mysql
+  database: prag_dave_testing_test
+  username: root
+  password:
+  host: localhost
+

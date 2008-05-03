@@ -1,5 +1,5 @@
-require 'test_results_gatherer.rb'
-require 'comparison_proxy.rb'
+require File.dirname(__FILE__) + '/test_results_gatherer.rb'
+require File.dirname(__FILE__) + '/comparison_proxy.rb'
 
 module PragDaveTesting
   
@@ -25,7 +25,7 @@ module PragDaveTesting
       val = instance_variable_get(iv)
       unless iv == "@__setup" || iv == "@__env"
         begin
-          unless val.class.superclass.to_s =~ /ActiveRecord/ || val.class.superclass.superclass.to_s =~ /ActiveRecord/
+          unless (val.class.superclass.to_s =~ /ActiveRecord/) || (val.class.superclass.superclass.to_s =~ /ActiveRecord/)
             ivs[iv] = val.clone
           else
             ivs[iv] = val
