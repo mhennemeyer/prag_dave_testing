@@ -16,7 +16,7 @@ module PragDaveTesting
     end
   end
   
-  # Don't look at this code !!!
+  # Don't look at this code !!! # this is my fault (m.hennemeyer) and i will refactor it tomorrow
   def set_environment
     # Really! Don't look !
     ivs = {}
