@@ -22,8 +22,12 @@ module PragDaveTesting
     instance_variables.each do |iv|
       val = instance_variable_get(iv)
       unless iv == "@__setup" || iv == "@__env"
-        begin 
-          ivs[iv] = val.clone
+        begin
+          unless val.class =~ /ActiveRecord/
+            ivs[iv] = val.clone
+          else
+            ivs[iv] = val
+          end
         rescue TypeError
           ivs[iv] = val
         end
