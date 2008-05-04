@@ -14,9 +14,10 @@ integration_test do
     testing "something else" do
       expect(@response.response_code) <= 399
       expect(@model.id) == @model_id
+      @model.id = @model_id + 1
     end
 
-    expect(@model.id) == @model_id
+    expect(@model.id) == @model_id # this will fail
   end
   
 end
