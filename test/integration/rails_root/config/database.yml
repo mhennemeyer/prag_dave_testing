@@ -1,9 +1,9 @@
 development:
   adapter: sqlite3
-  database: dev.sqlite3
+  database: db/dev.sqlite3
 
 test:
   adapter: sqlite3
-  database: test.sqlite3
+  database: db/test.sqlite3
 
 

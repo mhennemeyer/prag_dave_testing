@@ -3,6 +3,23 @@ require File.dirname(__FILE__) + '/comparison_proxy.rb'
 
 module PragDaveTesting
   
+  def dbread
+    db = []
+    File.open(RAILS_ROOT + "/db/test.sqlite3") do |f|
+      db = f.readlines
+    end
+    db
+  end
+  
+  def dbwrite(lines)
+    File.open(RAILS_ROOT + "/db/test.sqlite3", "w") do |f|
+      f.rewind
+      lines.each do |line|
+        f.write line
+      end
+    end
+  end
+  
   # :call-seq:
   # expect(1) == 1
   def expect(value)
@@ -19,7 +36,8 @@ module PragDaveTesting
   # Don't look at this code !!! # this is my fault (m.hennemeyer) and i will refactor it tomorrow
   def set_environment
     # Really! Don't look !
-    dbdump = "dump the database in memory! if rails test else nil "
+    db = []
+    db = dbread if rails_test?
     ivs = {}
     @__env ||= []
     instance_variables.each do |iv|
@@ -38,13 +56,17 @@ module PragDaveTesting
         end
       end
     end
-    @__env.push({:vars => ivs, :db => dbdump})
+    @__env.push({:vars => ivs, :db => db})
   end
   
   def get_environment
     env = @__env.pop
-    dbwrite = env[:db]
+    dbwrite(env[:db]) if rails_test?
     env[:vars]
+  end
+  
+  def rails_test?
+    defined? RAILS_ROOT
   end
 
   # Save any instance variables, yield to our block, then restore the instance
