@@ -19,54 +19,32 @@ module PragDaveTesting
   # Don't look at this code !!! # this is my fault (m.hennemeyer) and i will refactor it tomorrow
   def set_environment
     # Really! Don't look !
+    dbdump = "dump the database in memory! if rails test else nil "
     ivs = {}
     @__env ||= []
     instance_variables.each do |iv|
       val = instance_variable_get(iv)
       unless iv == "@__setup" || iv == "@__env"
         begin
-          unless (val.class.superclass.to_s =~ /ActiveRecord/) || (val.class.superclass.superclass.to_s =~ /ActiveRecord/)
+          if (val.class.superclass.to_s =~ /ActiveRecord/) || (val.class.superclass.superclass.to_s =~ /ActiveRecord/)
+            id = val.id || nil
             ivs[iv] = val.clone
+            ivs[iv].id = id
           else
-            ivs[iv] = val
+            ivs[iv] = val.clone
           end
         rescue TypeError
           ivs[iv] = val
         end
       end
     end
-    @__env.push ivs
+    @__env.push({:vars => ivs, :db => dbdump})
   end
   
   def get_environment
-    @__env.pop
-  end
-  
-  # The setup code is run in all subsequent testing blocks
-  # on the same level.
-  # == Example:
-  #
-  #   setup do
-  #     @var = 1
-  #   end
-  # 
-  #   testing "var should eql 1" do
-  #     expect(@var) == 1 
-  #   end
-  #  
-  #   testing "with a second setup" do
-  #     setup { @var = 3 }
-  # 
-  #     testing "var should eql 3" do
-  #       expect(@var) == 3
-  #     end
-  # 
-  #   end
-  #   
-  def setup(&block)
-    @__setup ||= {}
-    @__test_description ||= "nilnil"
-    @__setup[@__test_description] = lambda(&block)
+    env = @__env.pop
+    dbwrite = env[:db]
+    env[:vars]
   end
 
   # Save any instance variables, yield to our block, then restore the instance
@@ -76,7 +54,7 @@ module PragDaveTesting
   def testing(description,&block)
     testing_block_to_macro(description, &block)
     set_environment
-    @__setup && @__setup[@__test_description] && @__setup[@__test_description].call
+
     @__test_description = description
     
     yield

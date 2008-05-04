@@ -63,3 +63,41 @@ WARNING: You're using the Ruby-based MySQL library that ships with Rails. This l
   [4;35;1mSQL (0.002372)[0m   [0mINSERT INTO `schema_info` (version) VALUES(0)[0m
   [4;36;1mSQL (0.007615)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
   [4;35;1mSQL (0.000913)[0m   [0mUPDATE schema_info SET version = 2[0m
+  [4;36;1mSQL (0.002403)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.004095)[0m   [0mCREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.002559)[0m   [0;1mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000913)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CreateModels (1)
+  [4;35;1mSQL (0.002730)[0m   [0mCREATE TABLE models ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL) [0m
+  [4;36;1mSQL (0.002302)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mSQL (0.000831)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CreateStis (2)
+  [4;36;1mSQL (0.020748)[0m   [0;1mCREATE TABLE stis ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255) DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL) [0m
+  [4;35;1mSQL (0.002741)[0m   [0mUPDATE schema_info SET version = 2[0m
+  [4;36;1mSQL (0.000874)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.001162)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000287)[0m   [0;1mPRAGMA index_list(models)[0m
+  [4;35;1mSQL (0.000303)[0m   [0mPRAGMA index_list(stis)[0m
+  [4;36;1mSQL (0.001022)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000908)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000816)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000923)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.001181)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000313)[0m   [0;1mPRAGMA index_list(models)[0m
+  [4;35;1mSQL (0.000300)[0m   [0mPRAGMA index_list(stis)[0m
+  [4;36;1mSQL (0.000652)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: models: DROP TABLE models[0m
+  [4;36;1mSQL (0.002877)[0m   [0;1mCREATE TABLE models ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: stis: DROP TABLE stis[0m
+  [4;36;1mSQL (0.002554)[0m   [0;1mCREATE TABLE stis ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255) DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL) [0m
+  [4;35;1mSQL (0.003025)[0m   [0mCREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.002188)[0m   [0;1mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;35;1mSQL (0.002598)[0m   [0mUPDATE schema_info SET version = 2[0m

@@ -2,10 +2,10 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 integration_test do
   
-  setup { Model.destroy_all }
-  
   testing "Transactional instance variables with ActiveRecord" do
     # ActiveRecord models should not be cloned because they will loose their id
+    
+    Model.destroy_all
     
     post "/models", 'model' => {}
     @model = Model.find :first

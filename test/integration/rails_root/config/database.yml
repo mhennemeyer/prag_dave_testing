@@ -1,14 +1,9 @@
 development:
-  adapter: mysql
-  database: prag_dave_testing_dev
-  username: root
-  password:
-  host: localhost
-  
+  adapter: sqlite3
+  database: dev.sqlite3
+
 test:
-  adapter: mysql
-  database: prag_dave_testing_test
-  username: root
-  password:
-  host: localhost
+  adapter: sqlite3
+  database: test.sqlite3
+
 
