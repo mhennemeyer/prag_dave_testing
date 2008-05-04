@@ -2,7 +2,6 @@ require File.dirname(__FILE__) + '/../lib/prag_dave_testing.rb'
 
 require 'stringio'
 
-
 module Helper
   
   def run_test_and_catch_stderr(&block)
@@ -15,6 +14,8 @@ module Helper
       yield
       TestResultsGatherer.instance.instance_eval { @failures = failures }
       TestResultsGatherer.instance.instance_eval { @successes = successes}
+    rescue StandardError => e
+      return e.message
     ensure
       $stderr = olderr
     end

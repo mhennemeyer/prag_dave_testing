@@ -523,3 +523,158 @@ Redirected to http://www.example.com/models/13
 Completed in 0.00747 (133 reqs/sec) | DB: 0.00198 (26%) | 302 Found [http://www.example.com/models]
   [4;36;1mSQL (0.001022)[0m   [0;1mSELECT count(*) AS count_all FROM models [0m
   [4;35;1mModel Load (0.001038)[0m   [0mSELECT * FROM models [0m
+  [4;36;1mModel Create (0.001165)[0m   [0;1mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 12:58:53', '2008-05-04 12:58:53')[0m
+  [4;35;1mSQL (0.001193)[0m   [0mSELECT count(*) AS count_all FROM models [0m
+  [4;36;1mModel Create (0.001164)[0m   [0;1mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 12:59:08', '2008-05-04 12:59:08')[0m
+  [4;35;1mSQL (0.000963)[0m   [0mSELECT count(*) AS count_all FROM models [0m
+  [4;36;1mSQL (0.001005)[0m   [0;1mSELECT count(*) AS count_all FROM models [0m
+  [4;35;1mModel Load (0.001151)[0m   [0mSELECT * FROM models [0m
+  [4;36;1mModel Destroy (0.001085)[0m   [0;1m DELETE FROM models
+ WHERE "id" = 10
+[0m
+  [4;35;1mModel Destroy (0.001797)[0m   [0m DELETE FROM models
+ WHERE "id" = 11
+[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 13:03:02) [POST]
+  Session ID: e875087468afaa16595613321d39b8b5
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;36;1mModel Create (0.001555)[0m   [0;1mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 13:03:02', '2008-05-04 13:03:02')[0m
+Redirected to http://www.example.com/models/12
+Completed in 0.01590 (62 reqs/sec) | DB: 0.00659 (41%) | 302 Found [http://www.example.com/models]
+  [4;35;1mModel Load (0.001036)[0m   [0mSELECT * FROM models LIMIT 1[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 13:03:02) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsGOgtub3RpY2UiJE1vZGVsIHdhcyBzdWNjZXNzZnVsbHkgY3JlYXRl%0AZC4GOgpAdXNlZHsGOwZU--f30744be9dece4830cbae58e3206dea3655b853a
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;36;1mModel Create (0.000976)[0m   [0;1mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 13:03:02', '2008-05-04 13:03:02')[0m
+Redirected to http://www.example.com/models/13
+Completed in 0.00928 (107 reqs/sec) | DB: 0.00201 (21%) | 302 Found [http://www.example.com/models]
+  [4;35;1mSQL (0.000910)[0m   [0mSELECT count(*) AS count_all FROM models [0m
+  [4;36;1mModel Load (0.000995)[0m   [0;1mSELECT * FROM models [0m
+  [4;36;1mSQL (0.000973)[0m   [0;1mSELECT count(*) AS count_all FROM models [0m
+  [4;35;1mModel Load (0.000555)[0m   [0mSELECT * FROM models [0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 13:04:03) [POST]
+  Session ID: fba64c37f05e39803956689321f35c16
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;36;1mModel Create (0.001192)[0m   [0;1mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 13:04:03', '2008-05-04 13:04:03')[0m
+Redirected to http://www.example.com/models/1
+Completed in 0.01549 (64 reqs/sec) | DB: 0.00272 (17%) | 302 Found [http://www.example.com/models]
+  [4;35;1mModel Load (0.001141)[0m   [0mSELECT * FROM models LIMIT 1[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 13:04:03) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsGOgtub3RpY2UiJE1vZGVsIHdhcyBzdWNjZXNzZnVsbHkgY3JlYXRl%0AZC4GOgpAdXNlZHsGOwZU--f30744be9dece4830cbae58e3206dea3655b853a
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;36;1mModel Create (0.000997)[0m   [0;1mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 13:04:03', '2008-05-04 13:04:03')[0m
+Redirected to http://www.example.com/models/2
+Completed in 0.00803 (124 reqs/sec) | DB: 0.00214 (26%) | 302 Found [http://www.example.com/models]
+  [4;35;1mSQL (0.000952)[0m   [0mSELECT count(*) AS count_all FROM models [0m
+  [4;36;1mModel Load (0.001025)[0m   [0;1mSELECT * FROM models [0m
+  [4;36;1mModel Create (0.001164)[0m   [0;1mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 13:04:17', '2008-05-04 13:04:17')[0m
+  [4;35;1mSQL (0.000929)[0m   [0mSELECT count(*) AS count_all FROM models [0m
+  [4;36;1mSQL (0.001075)[0m   [0;1mSELECT count(*) AS count_all FROM models [0m
+  [4;35;1mModel Load (0.000600)[0m   [0mSELECT * FROM models [0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 13:09:15) [POST]
+  Session ID: 242ff0c7fbc9056fc139b7fa670d81ce
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;36;1mModel Create (0.002362)[0m   [0;1mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 13:09:15', '2008-05-04 13:09:15')[0m
+Redirected to http://www.example.com/models/1
+Completed in 0.02153 (46 reqs/sec) | DB: 0.00404 (18%) | 302 Found [http://www.example.com/models]
+  [4;35;1mModel Load (0.001032)[0m   [0mSELECT * FROM models LIMIT 1[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 13:09:15) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsGOgtub3RpY2UiJE1vZGVsIHdhcyBzdWNjZXNzZnVsbHkgY3JlYXRl%0AZC4GOgpAdXNlZHsGOwZU--f30744be9dece4830cbae58e3206dea3655b853a
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;36;1mModel Create (0.000961)[0m   [0;1mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 13:09:15', '2008-05-04 13:09:15')[0m
+Redirected to http://www.example.com/models/2
+Completed in 0.01044 (95 reqs/sec) | DB: 0.00199 (19%) | 302 Found [http://www.example.com/models]
+  [4;35;1mSQL (0.000925)[0m   [0mSELECT count(*) AS count_all FROM models [0m
+  [4;36;1mModel Load (0.001017)[0m   [0;1mSELECT * FROM models [0m
+  [4;36;1mModel Load (0.001543)[0m   [0;1mSELECT * FROM models [0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 13:45:23) [POST]
+  Session ID: c3811e2148de1686e53775468b6aef17
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mModel Create (0.002280)[0m   [0mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 13:45:23', '2008-05-04 13:45:23')[0m
+Redirected to http://www.example.com/models/1
+Completed in 0.02009 (49 reqs/sec) | DB: 0.00382 (19%) | 302 Found [http://www.example.com/models]
+  [4;36;1mModel Load (0.001153)[0m   [0;1mSELECT * FROM models LIMIT 1[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 13:45:23) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsGOgtub3RpY2UiJE1vZGVsIHdhcyBzdWNjZXNzZnVsbHkgY3JlYXRl%0AZC4GOgpAdXNlZHsGOwZU--f30744be9dece4830cbae58e3206dea3655b853a
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mModel Create (0.000976)[0m   [0mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 13:45:23', '2008-05-04 13:45:23')[0m
+Redirected to http://www.example.com/models/2
+Completed in 0.00828 (120 reqs/sec) | DB: 0.00213 (25%) | 302 Found [http://www.example.com/models]
+  [4;36;1mSQL (0.001252)[0m   [0;1mSELECT count(*) AS count_all FROM models [0m
+  [4;35;1mModel Load (0.001059)[0m   [0mSELECT * FROM models [0m
+  [4;36;1mModel Load (0.001506)[0m   [0;1mSELECT * FROM models [0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 13:45:49) [POST]
+  Session ID: 344d6bad58702b78434d8d92a7c25368
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mModel Create (0.001201)[0m   [0mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 13:45:49', '2008-05-04 13:45:49')[0m
+Redirected to http://www.example.com/models/1
+Completed in 0.01924 (51 reqs/sec) | DB: 0.00271 (14%) | 302 Found [http://www.example.com/models]
+  [4;36;1mModel Load (0.001057)[0m   [0;1mSELECT * FROM models LIMIT 1[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 13:45:49) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsGOgtub3RpY2UiJE1vZGVsIHdhcyBzdWNjZXNzZnVsbHkgY3JlYXRl%0AZC4GOgpAdXNlZHsGOwZU--f30744be9dece4830cbae58e3206dea3655b853a
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mModel Create (0.001265)[0m   [0mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 13:45:49', '2008-05-04 13:45:49')[0m
+Redirected to http://www.example.com/models/2
+Completed in 0.00897 (111 reqs/sec) | DB: 0.00232 (25%) | 302 Found [http://www.example.com/models]
+  [4;36;1mSQL (0.001069)[0m   [0;1mSELECT count(*) AS count_all FROM models [0m
+  [4;35;1mModel Load (0.001026)[0m   [0mSELECT * FROM models [0m
+  [4;36;1mModel Load (0.002634)[0m   [0;1mSELECT * FROM models [0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 14:07:42) [POST]
+  Session ID: 11244ae00523c771398a48bb4f2a9f99
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mModel Create (0.002388)[0m   [0mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 14:07:42', '2008-05-04 14:07:42')[0m
+Redirected to http://www.example.com/models/1
+Completed in 0.02323 (43 reqs/sec) | DB: 0.00502 (21%) | 302 Found [http://www.example.com/models]
+  [4;36;1mModel Load (0.001151)[0m   [0;1mSELECT * FROM models LIMIT 1[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 14:07:42) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsGOgtub3RpY2UiJE1vZGVsIHdhcyBzdWNjZXNzZnVsbHkgY3JlYXRl%0AZC4GOgpAdXNlZHsGOwZU--f30744be9dece4830cbae58e3206dea3655b853a
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mModel Create (0.001251)[0m   [0mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 14:07:42', '2008-05-04 14:07:42')[0m
+Redirected to http://www.example.com/models/2
+Completed in 0.00995 (100 reqs/sec) | DB: 0.00240 (24%) | 302 Found [http://www.example.com/models]
+  [4;36;1mSQL (0.001093)[0m   [0;1mSELECT count(*) AS count_all FROM models [0m
+  [4;35;1mModel Load (0.001163)[0m   [0mSELECT * FROM models [0m
+  [4;36;1mModel Load (0.001563)[0m   [0;1mSELECT * FROM models [0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 14:34:08) [POST]
+  Session ID: 4a228916dc5059482dd6ea00002a40f1
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mModel Create (0.001237)[0m   [0mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 14:34:08', '2008-05-04 14:34:08')[0m
+Redirected to http://www.example.com/models/1
+Completed in 0.01945 (51 reqs/sec) | DB: 0.00280 (14%) | 302 Found [http://www.example.com/models]
+  [4;36;1mModel Load (0.001058)[0m   [0;1mSELECT * FROM models LIMIT 1[0m
+
+
+Processing ModelsController#create (for 127.0.0.1 at 2008-05-04 14:34:08) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsGOgtub3RpY2UiJE1vZGVsIHdhcyBzdWNjZXNzZnVsbHkgY3JlYXRl%0AZC4GOgpAdXNlZHsGOwZU--f30744be9dece4830cbae58e3206dea3655b853a
+  Parameters: {"action"=>"create", "controller"=>"models"}
+  [4;35;1mModel Create (0.001025)[0m   [0mINSERT INTO models ("updated_at", "created_at") VALUES('2008-05-04 14:34:08', '2008-05-04 14:34:08')[0m
+Redirected to http://www.example.com/models/2
+Completed in 0.00800 (125 reqs/sec) | DB: 0.00208 (26%) | 302 Found [http://www.example.com/models]
+  [4;36;1mSQL (0.001625)[0m   [0;1mSELECT count(*) AS count_all FROM models [0m
+  [4;35;1mModel Load (0.001044)[0m   [0mSELECT * FROM models [0m

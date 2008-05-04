@@ -2,7 +2,8 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 integration_test do
   
-  testing "Transactional instance variables with ActiveRecord" do
+  
+  testing "Transactional models and Integration Session" do
     # ActiveRecord models should not be cloned because they will loose their id
     
     

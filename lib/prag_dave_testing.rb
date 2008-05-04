@@ -4,11 +4,9 @@ require File.dirname(__FILE__) + '/comparison_proxy.rb'
 module PragDaveTesting
   
   def dbread
-    db = []
     File.open(RAILS_ROOT + "/db/test.sqlite3") do |f|
-      db = f.readlines
+      f.readlines
     end
-    db
   end
   
   def dbwrite(lines)
@@ -28,8 +26,12 @@ module PragDaveTesting
   
   def testing_block_to_macro(description, &block)
     description_method_name = ("expect_" + description.gsub(" ", "_")).to_sym
+    testing_block = lambda do
+      raise StandardError.new("This would be a long loop") if @__test_description == description
+      testing(description + "_macro", &block)
+    end
     PragDaveTesting.module_eval do 
-      define_method(description_method_name,&block)
+      define_method(description_method_name,&testing_block)
     end
   end
   
@@ -42,7 +44,7 @@ module PragDaveTesting
     @__env ||= []
     instance_variables.each do |iv|
       val = instance_variable_get(iv)
-      unless iv == "@__setup" || iv == "@__env"
+      unless iv == "@__env"
         begin
           if (val.class.superclass.to_s =~ /ActiveRecord/) || (val.class.superclass.superclass.to_s =~ /ActiveRecord/)
             id = val.id || nil
@@ -74,16 +76,19 @@ module PragDaveTesting
   # tacky, but has the nice side effect of saving and restoring it in nested
   # testing blocks
   def testing(description,&block)
+    
     testing_block_to_macro(description, &block)
+    
     set_environment
 
     @__test_description = description
     
     yield
+
     @__test_description = nil
     
     instance_variables.each do |iv| 
-      instance_variable_set(iv, nil) unless iv == "@__setup" || iv == "@__env"
+      instance_variable_set(iv, nil) unless iv == "@__env"
     end
     
     get_environment.each do |iv, value|
