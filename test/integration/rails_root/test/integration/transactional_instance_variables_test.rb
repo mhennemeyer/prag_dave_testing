@@ -20,7 +20,7 @@ integration_test do
       @model = "FunnyHorst!"
     end
     
-    # the model.id should be still the original one
+    # the model should be still the original one
     expect(@model) == Model.find(:first)
      
     testing "transactional db operations" do

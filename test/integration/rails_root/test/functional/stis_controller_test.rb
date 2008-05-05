@@ -1,45 +1,63 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class StisControllerTest < ActionController::TestCase
-  def test_should_get_index
+# TODO
+# include helper : sti_path,...
+
+functional_test :stis do
+  
+  Sti.destroy_all
+  Sti.create! :name => 'Horst'
+  Sti.create! :name => 'Heinz'
+  
+  testing "get index" do
     get :index
-    assert_response :success
-    assert_not_nil assigns(:stis)
+    expect(@response.response_code) <= 399
+    expect(assigns(:stis)) != nil
   end
-
-  def test_should_get_new
+  
+  testing "get new" do
     get :new
-    assert_response :success
+    expect(@response.response_code) <= 399
   end
-
-  def test_should_create_sti
-    assert_difference('Sti.count') do
-      post :create, :sti => { }
-    end
-
-    assert_redirected_to sti_path(assigns(:sti))
+  
+  testing "post create" do
+    Sti.destroy_all
+    post :create, :sti => {  }
+    expect(Sti.count) == 1
+    puts @response.instance_variables
+    #expect(@response.redirected_to) == sti_path(assigns(:sti))
   end
-
-  def test_should_show_sti
-    get :show, :id => stis(:one).id
-    assert_response :success
-  end
-
-  def test_should_get_edit
-    get :edit, :id => stis(:one).id
-    assert_response :success
-  end
-
-  def test_should_update_sti
-    put :update, :id => stis(:one).id, :sti => { }
-    assert_redirected_to sti_path(assigns(:sti))
-  end
-
-  def test_should_destroy_sti
-    assert_difference('Sti.count', -1) do
-      delete :destroy, :id => stis(:one).id
-    end
-
-    assert_redirected_to stis_path
-  end
+  
 end
+
+
+
+# 
+
+# 
+#     assert_redirected_to sti_path(assigns(:sti))
+#   end
+# 
+#   def test_should_show_sti
+#     get :show, :id => stis(:one).id
+#     assert_response :success
+#   end
+# 
+#   def test_should_get_edit
+#     get :edit, :id => stis(:one).id
+#     assert_response :success
+#   end
+# 
+#   def test_should_update_sti
+#     put :update, :id => stis(:one).id, :sti => { }
+#     assert_redirected_to sti_path(assigns(:sti))
+#   end
+# 
+#   def test_should_destroy_sti
+#     assert_difference('Sti.count', -1) do
+#       delete :destroy, :id => stis(:one).id
+#     end
+# 
+#     assert_redirected_to stis_path
+#   end
+# end

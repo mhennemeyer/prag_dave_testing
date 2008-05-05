@@ -1,8 +1,9 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class StiTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+testing "Sti" do
+  @sti = Sti.create!
+  testing "with name" do
+    expect(@sti.update_attributes(:name => 'Horst')) == true
   end
 end
+    

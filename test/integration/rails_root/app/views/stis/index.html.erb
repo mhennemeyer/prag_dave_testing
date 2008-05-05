@@ -6,6 +6,7 @@
 
 <% for sti in @stis %>
   <tr>
+    <td><%= sti.name %></td>
     <td><%= link_to 'Show', sti %></td>
     <td><%= link_to 'Edit', edit_sti_path(sti) %></td>
     <td><%= link_to 'Destroy', sti, :confirm => 'Are you sure?', :method => :delete %></td>
