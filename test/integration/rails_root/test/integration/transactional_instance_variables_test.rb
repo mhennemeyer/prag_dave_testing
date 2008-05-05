@@ -31,7 +31,7 @@ integration_test do
     end
    
    # now there should be only the one model posted in this testing block
-   expect(Model.find(:all).size) == 1
+   expect(Model.count) == 1
    
  end
    

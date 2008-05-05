@@ -9,7 +9,7 @@ module PragDaveTesting
     end
   end
   
-  def dbwrite(lines)
+  def db_write(lines)
     File.open(RAILS_ROOT + "/db/test.sqlite3", "w") do |f|
       f.rewind
       lines.each do |line|
@@ -25,7 +25,7 @@ module PragDaveTesting
   end
   
   def testing_block_to_macro(description, &block)
-    description_method_name = ("expect_" + description.gsub(" ", "_")).to_sym
+    description_method_name = ("expect_" + description.downcase.gsub(" ", "_")).to_sym
     testing_block = lambda do
       raise StandardError.new("This would be a long loop") if @__test_description == description
       testing(description + "_macro", &block)
@@ -61,9 +61,9 @@ module PragDaveTesting
     @__env.push({:vars => ivs, :db => db})
   end
   
-  def get_environment
+  def get_environment!
     env = @__env.pop
-    dbwrite(env[:db]) if rails_test?
+    db_write(env[:db]) if rails_test?
     env[:vars]
   end
   
@@ -82,17 +82,20 @@ module PragDaveTesting
     set_environment
 
     @__test_description = description
+    begin
+      yield
+    rescue 
+      raise
+    ensure
+      @__test_description = nil
     
-    yield
-
-    @__test_description = nil
+      instance_variables.each do |iv| 
+        instance_variable_set(iv, nil) unless iv == "@__env"
+      end
     
-    instance_variables.each do |iv| 
-      instance_variable_set(iv, nil) unless iv == "@__env"
-    end
-    
-    get_environment.each do |iv, value|
-      instance_variable_set(iv, value)
+      get_environment!.each do |iv, value|
+        instance_variable_set(iv, value)
+      end
     end
   end
   

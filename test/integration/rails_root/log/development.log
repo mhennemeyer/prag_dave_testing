@@ -120,3 +120,22 @@ Migrating to CreateStis (2)
   [4;35;1mSQL (0.002735)[0m   [0mCREATE TABLE schema_info (version integer)[0m
   [4;36;1mSQL (0.002372)[0m   [0;1mINSERT INTO schema_info (version) VALUES(0)[0m
   [4;35;1mSQL (0.109615)[0m   [0mUPDATE schema_info SET version = 2[0m
+  [4;36;1mSQL (0.001035)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000927)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000811)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000875)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.001088)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000304)[0m   [0;1mPRAGMA index_list(models)[0m
+  [4;35;1mSQL (0.000299)[0m   [0mPRAGMA index_list(stis)[0m
+  [4;36;1mSQL (0.000837)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: models: DROP TABLE models[0m
+  [4;36;1mSQL (0.002858)[0m   [0;1mCREATE TABLE models ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: stis: DROP TABLE stis[0m
+  [4;36;1mSQL (0.115878)[0m   [0;1mCREATE TABLE stis ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255) DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL) [0m
+  [4;35;1mSQL (0.002790)[0m   [0mCREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.002524)[0m   [0;1mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;35;1mSQL (0.002199)[0m   [0mUPDATE schema_info SET version = 2[0m
