@@ -3,6 +3,10 @@ require File.dirname(__FILE__) + '/comparison_proxy.rb'
 
 module PragDaveTesting
   
+  def active_record?(var)
+    (var.class.superclass.to_s =~ /ActiveRecord/) || (var.class.superclass.superclass.to_s =~ /ActiveRecord/)
+  end
+  
   def dbread
     File.open(RAILS_ROOT + "/db/test.sqlite3") do |f|
       f.readlines
@@ -36,7 +40,7 @@ module PragDaveTesting
   end
   
   # Don't look at this code !!! # this is my fault (m.hennemeyer) and i will refactor it tomorrow
-  def set_environment
+  def save_environment!
     # Really! Don't look !
     db = []
     db = dbread if rails_test?
@@ -46,19 +50,24 @@ module PragDaveTesting
       val = instance_variable_get(iv)
       unless iv == "@__env"
         begin
-          if (val.class.superclass.to_s =~ /ActiveRecord/) || (val.class.superclass.superclass.to_s =~ /ActiveRecord/)
-            id = val.id || nil
-            ivs[iv] = val.clone
-            ivs[iv].id = id
-          else
-            ivs[iv] = val.clone
-          end
+          ivs[iv] = val.dup
+          # active_record?(val) && val.reload
         rescue TypeError
           ivs[iv] = val
         end
       end
     end
     @__env.push({:vars => ivs, :db => db})
+  end
+  
+  def set_environment!
+    instance_variables.each do |iv| 
+      instance_variable_set(iv, nil) unless iv == "@__env"
+    end
+    get_environment!.each do |iv, value|
+      var = instance_variable_set(iv, value)
+      active_record?(var) && var.reload
+    end
   end
   
   def get_environment!
@@ -79,23 +88,16 @@ module PragDaveTesting
     
     testing_block_to_macro(description, &block)
     
-    set_environment
+    save_environment!
 
     @__test_description = description
     begin
       yield
-    rescue 
-      raise
+    rescue Exception => e
+      raise e
     ensure
       @__test_description = nil
-    
-      instance_variables.each do |iv| 
-        instance_variable_set(iv, nil) unless iv == "@__env"
-      end
-    
-      get_environment!.each do |iv, value|
-        instance_variable_set(iv, value)
-      end
+      set_environment!
     end
   end
   

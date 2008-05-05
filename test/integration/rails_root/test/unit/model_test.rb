@@ -12,6 +12,14 @@ testing "model" do
   end
 
   expect(@model) == Model.find(:first)
-  # expect(Model.find(:first)) == @model # why does this fail???
   
 end
+
+testing "Save a model object referenced by an instance variable after a transactional testing block" do
+  Model.destroy_all
+  @model = Model.create!
+  testing "" do
+  end
+  expect(@model.save!) == true
+end
+
