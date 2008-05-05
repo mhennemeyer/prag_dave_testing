@@ -36,6 +36,8 @@ module PragDaveTesting
       @description = description
     end
     
+
+    
     private
   
     def __compare(op, other)
@@ -50,6 +52,5 @@ module PragDaveTesting
         @test_runner.report_failure(report)
       end
     end
-
   end
 end
