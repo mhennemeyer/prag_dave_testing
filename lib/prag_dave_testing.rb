@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_results_gatherer.rb'
 require File.dirname(__FILE__) + '/comparison_proxy.rb'
-require File.dirname(__FILE__) + '/functional.rb'
+
 
 
 module PragDaveTesting
@@ -111,11 +111,7 @@ module PragDaveTesting
     ActionController::Integration::Session.new.instance_eval &block
   end
   
-  def functional_test(controller_name, &block)
-    return unless rails_test?
-    Functional.functional(controller_name, &block)
-  end
-  
+
 end
 
 include PragDaveTesting
