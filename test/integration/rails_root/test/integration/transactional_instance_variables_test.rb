@@ -10,11 +10,11 @@ integration_test do
     Model.destroy_all
     
     post "/models", 'model' => {}
-    @model = Model.find :first
+    @model = Model.find(:first)
 
     testing "something else" do
       # posting the new model should be no failure
-      expect(@response.response_code) <= 399
+      expect(@response.response_code) == 302
       
       # change the model object
       @model = "FunnyHorst!"

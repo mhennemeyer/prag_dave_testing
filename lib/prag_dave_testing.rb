@@ -108,6 +108,8 @@ module PragDaveTesting
   # methods from ActionController::Integration::Session
   def integration_test(&block)
     return unless rails_test?
+    require 'action_controller'
+    require 'action_controller/integration'
     ActionController::Integration::Session.new.instance_eval &block
   end
   
