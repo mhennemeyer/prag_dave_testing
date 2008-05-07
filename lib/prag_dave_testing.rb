@@ -110,7 +110,11 @@ module PragDaveTesting
     return unless rails_test?
     require 'action_controller'
     require 'action_controller/integration'
-    ActionController::Integration::Session.new.instance_eval &block
+    begin
+      ActionController::Integration::Session.new.instance_eval &block
+    rescue Test::Unit::AssertionFailedError => test_unit_error
+      expect(test_unit_error.message) == ""
+    end
   end
   
 

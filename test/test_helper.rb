@@ -24,6 +24,20 @@ module Helper
   
   alias  run run_test_and_catch_stderr
   
+  def debug_integration
+    return unless defined? RAILS_ROOT
+    puts "\n ++++ methods:\n"
+    puts methods
+    puts "\n ++++ variables:\n"
+    puts instance_variables
+    puts "\n ++++ request:\n"
+    puts request.instance_variables
+    puts "\n ++++ response:\n"
+    puts response.instance_variables
+    puts "\n ++++ assigns:\n"
+    puts assigns
+  end
+  
 end
 
 include Helper
