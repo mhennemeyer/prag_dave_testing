@@ -113,8 +113,8 @@ module PragDaveTesting
     include ActionController::Integration::Runner
     begin
       yield if block_given?
-    rescue Test::Unit::AssertionFailedError => test_unit_error
-      expect(test_unit_error.message) == ""
+    rescue Exception => error
+      expect(error.message) == ""
     end
   end
   
