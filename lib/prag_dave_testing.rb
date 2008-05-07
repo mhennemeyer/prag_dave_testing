@@ -106,12 +106,13 @@ module PragDaveTesting
   # define all testing blocks inside the block associated to
   # #integration_test and you have access to all the 
   # methods from ActionController::Integration::Session
-  def integration_test(&block)
+  def integration_test
     return unless rails_test?
     require 'action_controller'
     require 'action_controller/integration'
+    include ActionController::Integration::Runner
     begin
-      ActionController::Integration::Session.new.instance_eval &block
+      yield if block_given?
     rescue Test::Unit::AssertionFailedError => test_unit_error
       expect(test_unit_error.message) == ""
     end
