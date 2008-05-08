@@ -56,6 +56,7 @@ module PragDaveTesting
           # active_record?(val) && val.reload
         rescue TypeError
           ivs[iv] = val
+          $stderr.puts "Warning: Stored reference! #{iv} : #{val.class} doesn't like #dup" unless val.class == NilClass
         end
       end
     end
