@@ -10,7 +10,6 @@ module PragDaveTesting
   end
   
   def clear_session
-    puts "+++++++++++++++++++++"
     if instance_variables.include?("@integration_session") && (@integration_session.session.class.to_s  == "CGI::Session")
       sessionname = @integration_session.session.dbman.instance_eval { @cookie_options['name'].to_s }
       cookies.delete(sessionname)
