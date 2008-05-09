@@ -10,7 +10,8 @@ module PragDaveTesting
   end
   
   def clear_session
-    if instance_variables.include?("@integration_session") && (@integration_session.session.class.to_s  == "CGI::Session")
+    return unless integration?
+    if @integration_session.session.class.to_s  == "CGI::Session"
       sessionname = @integration_session.session.dbman.instance_eval { @cookie_options['name'].to_s }
       cookies.delete(sessionname)
       @integration_session.session.dbman.delete
@@ -39,8 +40,29 @@ module PragDaveTesting
   end
   
   def integration?
+    return false unless rails_test?
     instance_variables.include?("@integration_session")
   end
+  
+  def run_test_and_catch_stderr(&block)
+    olderr = $stderr
+    err = StringIO.new
+    $stderr = err
+    begin
+      failures  = TestResultsGatherer.instance.instance_eval { @failures }
+      successes = TestResultsGatherer.instance.instance_eval { @successes }
+      yield
+      TestResultsGatherer.instance.instance_eval { @failures = failures }
+      TestResultsGatherer.instance.instance_eval { @successes = successes}
+    rescue StandardError => e
+      return e.message
+    ensure
+      $stderr = olderr
+    end
+    err.string
+  end
+  
+  alias  run run_test_and_catch_stderr
   
   def testing_block_to_macro(description, &block)
     description_method_name = ("expect_" + description.downcase.gsub(" ", "_")).to_sym
