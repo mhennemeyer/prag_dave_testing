@@ -9,6 +9,15 @@ module PragDaveTesting
     (var.class.superclass.to_s =~ /ActiveRecord/) || (var.class.superclass.superclass.to_s =~ /ActiveRecord/)
   end
   
+  def clear_session
+    puts "+++++++++++++++++++++"
+    if instance_variables.include?("@integration_session") && (@integration_session.session.class.to_s  == "CGI::Session")
+      sessionname = @integration_session.session.dbman.instance_eval { @cookie_options['name'].to_s }
+      cookies.delete(sessionname)
+      @integration_session.session.dbman.delete
+    end
+  end
+  
   def dbread
     File.open(RAILS_ROOT + "/db/test.sqlite3") do |f|
       f.readlines
@@ -28,6 +37,10 @@ module PragDaveTesting
   # expect(1) == 1
   def expect(value)
     ComparisonProxy.new(TestResultsGatherer.instance, value, @__test_description)
+  end
+  
+  def integration?
+    instance_variables.include?("@integration_session")
   end
   
   def testing_block_to_macro(description, &block)
@@ -64,7 +77,7 @@ module PragDaveTesting
   end
   
   def set_environment!
-    cookies.clear if instance_variables.include?("@integration_session")
+    clear_session if integration?
     instance_variables.each do |iv| 
       instance_variable_set(iv, nil) unless iv == "@__env"
     end
