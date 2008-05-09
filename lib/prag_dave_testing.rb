@@ -64,6 +64,7 @@ module PragDaveTesting
   end
   
   def set_environment!
+    cookies.clear if instance_variables.include?("@integration_session")
     instance_variables.each do |iv| 
       instance_variable_set(iv, nil) unless iv == "@__env"
     end
