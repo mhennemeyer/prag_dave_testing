@@ -11,7 +11,7 @@ module PragDaveTesting
   
   def clear_session
     return unless integration?
-    if @integration_session.session.class.to_s  == "CGI::Session"
+    if @integration_session && (@integration_session.session.class.to_s  == "CGI::Session") && @integration_session.session.dbman
       sessionname = @integration_session.session.dbman.instance_eval { @cookie_options['name'].to_s }
       cookies.delete(sessionname)
       @integration_session.session.dbman.delete
@@ -90,7 +90,7 @@ module PragDaveTesting
           # active_record?(val) && val.reload
         rescue TypeError
           ivs[iv] = val
-          $stderr.puts "Warning: Stored reference! #{iv} : #{val.class} doesn't like #dup" unless val.class == NilClass
+          $stderr.puts "Warning: Stored reference! #{iv} : #{val.class} doesn't like #dup" unless (val.class == NilClass) || (val.class == Fixnum)
         end
       end
     end
@@ -98,7 +98,7 @@ module PragDaveTesting
   end
   
   def set_environment!
-    clear_session if integration?
+    integration? && clear_session
     instance_variables.each do |iv| 
       instance_variable_set(iv, nil) unless iv == "@__env"
     end
